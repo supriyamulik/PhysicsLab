@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lab_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="24dp">
+
+        <!-- Sensor Hardware Name pill/row -->
+        <TextView
+            android:id="@+id/tvSensorHardwareName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_medium"
+            tools:text="Hardware: AK09918 Magnetometer" />
+
+        <!-- Unsupported sensor warning (hidden unless sensor missing) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardUnsupported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FEF2F2"
+            app:strokeColor="#FECACA"
+            app:strokeWidth="1dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensor Not Available"
+                    android:textColor="@color/lab_danger"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_bold" />
+
+                <TextView
+                    android:id="@+id/tvUnsupportedReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="This device does not have the hardware sensor required for this measurement."
+                    android:textColor="#991B1B"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Magnetometer Calibration Notice (shown when accuracy is UNRELIABLE or LOW) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMagCalibrationNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFBEB"
+            app:strokeColor="#FDE68A"
+            app:strokeWidth="1dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    android:contentDescription="Calibration alert icon"
+                    app:tint="@color/lab_warning" />
+
+                <TextView
+                    android:id="@+id/tvCalibrationHint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="Move away from magnets or metal objects and gently wave your phone in a figure-8 to calibrate."
+                    android:textColor="#92400E"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Acceleration Gravity Explanation Notice -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAccelGravityNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/lab_primary_light"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    android:contentDescription="Gravity note icon"
+                    app:tint="@color/lab_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="Readings include Earth's gravitational acceleration (about 9.81 m/s² at rest)."
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Light Indicative Explanation Notice -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLightIndicativeNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/lab_primary_light"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    android:contentDescription="Light sensor note icon"
+                    app:tint="@color/lab_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="Note: Smartphone ambient light sensors are factory-approximate and uncalibrated; readings are indicative."
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Circular Arc Gauge Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGauge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+                <com.physicslab.app.ui.view.CircularGaugeView
+                    android:id="@+id/gaugeView"
+                    android:layout_width="230dp"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3-Column Metrics Card (Min / Avg / Max) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:baselineAligned="false">
+
+                <!-- Min -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <TextView
+                        android:id="@+id/tvLiveMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="--"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/lab_card_border" />
+
+                <!-- Avg -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avg"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <TextView
+                        android:id="@+id/tvLiveAvg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="--"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/lab_card_border" />
+
+                <!-- Max -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <TextView
+                        android:id="@+id/tvLiveMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="--"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Axis Values Card (Visible for Vector quantities: Accel and Magnetic Field) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAxisValues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Axis Values"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- X Axis Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_axis_indicator"
+                        android:backgroundTint="@color/lab_axis_x" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="X:"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                    <TextView
+                        android:id="@+id/tvAxisX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="0.00"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+
+                    <ProgressBar
+                        android:id="@+id/pbAxisX"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressTint="@color/lab_axis_x" />
+                </LinearLayout>
+
+                <!-- Y Axis Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_axis_indicator"
+                        android:backgroundTint="@color/lab_axis_y" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Y:"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                    <TextView
+                        android:id="@+id/tvAxisY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="0.00"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+
+                    <ProgressBar
+                        android:id="@+id/pbAxisY"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressTint="@color/lab_axis_y" />
+                </LinearLayout>
+
+                <!-- Z Axis Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_axis_indicator"
+                        android:backgroundTint="@color/lab_axis_z" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Z:"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                    <TextView
+                        android:id="@+id/tvAxisZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="0.00"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+
+                    <ProgressBar
+                        android:id="@+id/pbAxisZ"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressTint="@color/lab_axis_z" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Live Trend Chart Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLiveTrend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvTrendTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Live Trend"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_marginBottom="8dp" />
+
+                <com.physicslab.app.ui.view.LiveTrendView
+                    android:id="@+id/liveTrendView"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Reading Action Button (>= 48dp touch target) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveReading"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="+ Save Reading"
+            android:textColor="@color/lab_surface"
+            android:textSize="15sp"
+            android:fontFamily="@font/inter_semibold"
+            app:cornerRadius="12dp"
+            app:backgroundTint="@color/lab_primary"
+            app:icon="@drawable/ic_save"
+            app:iconGravity="textStart"
+            app:iconTint="@color/lab_surface" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

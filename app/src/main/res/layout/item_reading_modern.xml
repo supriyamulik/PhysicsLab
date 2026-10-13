@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardReading"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/lab_card_border"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/lab_surface">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp">
+
+        <!-- Reading Name -->
+        <TextView
+            android:id="@+id/tvReadingName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="15sp"
+            android:fontFamily="@font/inter_semibold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvReadingValue"
+            tools:text="Lab Bench 1" />
+
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/tvReadingTimestamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/lab_text_tertiary"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReadingName"
+            app:layout_constraintEnd_toStartOf="@+id/tvReadingValue"
+            tools:text="Oct 13, 2026 · 11:30 PM" />
+
+        <!-- Resultant Value -->
+        <TextView
+            android:id="@+id/tvReadingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lab_primary"
+            android:textSize="18sp"
+            android:fontFamily="@font/inter_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="48.20 µT" />
+
+        <!-- Optional X/Y/Z components text -->
+        <TextView
+            android:id="@+id/tvReadingComponents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="11sp"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReadingValue"
+            tools:text="X: 12.1 · Y: -24.5 · Z: 40.0" />
+
+        <!-- Actions divider -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/lab_card_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReadingComponents" />
+
+        <!-- Edit / Rename Button (min touch target 48dp) -->
+        <ImageButton
+            android:id="@+id/btnEditReading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="Rename reading"
+            app:tint="@color/lab_text_secondary"
+            app:layout_constraintEnd_toStartOf="@id/btnDeleteReading"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Delete Button (min touch target 48dp) -->
+        <ImageButton
+            android:id="@+id/btnDeleteReading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Delete reading"
+            app:tint="@color/lab_danger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_card">
+
+    <TextView
+        android:id="@+id/tvEditDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Reading"
+        android:textColor="@color/lab_text_primary"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_bold" />
+
+    <TextView
+        android:id="@+id/tvEditDialogSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Enter an experiment name for this measurement snapshot."
+        android:textColor="@color/lab_text_secondary"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_regular" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilReadingName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Experiment Name"
+        app:boxStrokeColor="@color/lab_primary"
+        app:hintTextColor="@color/lab_primary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etReadingName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_regular"
+            android:maxLength="60" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDialogCancel"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Cancel"
+            android:textColor="@color/lab_text_secondary"
+            android:fontFamily="@font/inter_medium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDialogConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="Save"
+            android:textColor="@color/lab_surface"
+            android:fontFamily="@font/inter_semibold"
+            app:cornerRadius="10dp"
+            app:backgroundTint="@color/lab_primary" />
+
+    </LinearLayout>
+
+</LinearLayout>

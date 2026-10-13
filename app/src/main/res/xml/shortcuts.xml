@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="magnetic_field"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/shortcut_magnetic_short"
+        android:shortcutLongLabel="@string/shortcut_magnetic_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.physicslab.app"
+            android:targetClass="com.physicslab.app.MagneticFieldActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="acceleration"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/shortcut_acceleration_short"
+        android:shortcutLongLabel="@string/shortcut_acceleration_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.physicslab.app"
+            android:targetClass="com.physicslab.app.AccelerationActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="decibel"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/shortcut_decibel_short"
+        android:shortcutLongLabel="@string/shortcut_decibel_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.physicslab.app"
+            android:targetClass="com.physicslab.app.DecibelActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="reaction_time"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/shortcut_reaction_short"
+        android:shortcutLongLabel="@string/shortcut_reaction_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.physicslab.app"
+            android:targetClass="com.physicslab.app.ReactionTimeActivity" />
+    </shortcut>
+</shortcuts>

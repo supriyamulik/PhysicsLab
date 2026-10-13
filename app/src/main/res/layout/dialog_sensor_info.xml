@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_card">
+
+    <TextView
+        android:id="@+id/tvInfoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hardware Sensor Specifications"
+        android:textColor="@color/lab_text_primary"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Direct telemetry from Android SensorManager"
+        android:textColor="@color/lab_text_secondary"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_regular" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="14dp"
+        android:background="@color/lab_card_border" />
+
+    <!-- Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Sensor Name:"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_medium" />
+        <TextView
+            android:id="@+id/tvInfoSensorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_semibold"
+            tools:text="AK09918 Magnetometer" />
+    </LinearLayout>
+
+    <!-- Vendor -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Vendor:"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_medium" />
+        <TextView
+            android:id="@+id/tvInfoVendor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_semibold"
+            tools:text="Asahi Kasei Microdevices" />
+    </LinearLayout>
+
+    <!-- Max Range -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Max Range:"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_medium" />
+        <TextView
+            android:id="@+id/tvInfoMaxRange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_semibold"
+            tools:text="4912.0 µT" />
+    </LinearLayout>
+
+    <!-- Resolution -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Resolution:"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_medium" />
+        <TextView
+            android:id="@+id/tvInfoResolution"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_semibold"
+            tools:text="0.15 µT" />
+    </LinearLayout>
+
+    <!-- Accuracy -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Accuracy:"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_medium" />
+        <TextView
+            android:id="@+id/tvInfoAccuracy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/lab_positive"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_semibold"
+            tools:text="High (3)" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnInfoClose"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Close"
+        android:textColor="@color/lab_surface"
+        android:textSize="14sp"
+        android:fontFamily="@font/inter_semibold"
+        app:cornerRadius="10dp"
+        app:backgroundTint="@color/lab_primary" />
+
+</LinearLayout>

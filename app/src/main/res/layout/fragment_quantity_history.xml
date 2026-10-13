@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lab_bg">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:strokeColor="@color/lab_card_border"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/lab_surface">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                android:contentDescription="Search icon"
+                app:tint="@color/lab_text_secondary" />
+
+            <EditText
+                android:id="@+id/etHistorySearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@null"
+                android:hint="Search readings by name..."
+                android:textColor="@color/lab_text_primary"
+                android:textColorHint="@color/lab_text_tertiary"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_regular"
+                android:imeOptions="actionSearch"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/btnClearSearch"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close"
+                android:contentDescription="Clear search"
+                android:visibility="gone"
+                app:tint="@color/lab_text_tertiary"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:id="@+id/tvHistoryCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 readings"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_medium" />
+
+        <TextView
+            android:id="@+id/btnClearHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            android:text="Clear History"
+            android:textColor="@color/lab_danger"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_semibold" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutHistoryEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Saved Readings"
+                android:textColor="@color/lab_text_primary"
+                android:textSize="17sp"
+                android:fontFamily="@font/inter_semibold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Tap '+ Save Reading' on the Live tab to record your first measurement snapshot."
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_regular" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoToLive"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Go to Live Sensor"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/lab_surface"
+                app:cornerRadius="10dp"
+                app:backgroundTint="@color/lab_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutSearchEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Results"
+                android:textColor="@color/lab_text_primary"
+                android:textSize="17sp"
+                android:fontFamily="@font/inter_semibold" />
+
+            <TextView
+                android:id="@+id/tvSearchEmptyQuery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="No readings match your search."
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_regular" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

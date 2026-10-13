@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/lab_bg" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+
+        <TextView android:id="@+id/txtBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="‹ Back" android:textColor="@color/lab_primary" android:textSize="16sp" android:padding="4dp" android:layout_marginTop="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🎵 Sound Frequency Tester" android:textColor="@color/lab_text_primary" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+
+        <TextView android:id="@+id/txtSensorInfo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Microphone: —" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:layout_marginBottom="16dp" />
+
+        <TextView android:id="@+id/txtUnavailable" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⚠ Microphone permission is required for this tool." android:textColor="@color/lab_danger" android:textSize="14sp"
+            android:padding="12dp" android:background="@color/lab_surface" android:visibility="gone" android:layout_marginBottom="16dp" />
+
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp" app:cardBackgroundColor="@color/lab_surface" app:cardElevation="6dp" android:layout_marginBottom="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="28dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DOMINANT FREQUENCY" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:letterSpacing="0.1" />
+                <TextView android:id="@+id/txtResultant" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="@color/lab_primary" android:textSize="48sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                <TextView android:id="@+id/txtNoteLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hz" android:textColor="@color/lab_text_secondary" android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnListen" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Start Listening" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Physics behind this measurement" android:textColor="@color/lab_text_primary" android:textStyle="bold" android:textSize="15sp" android:layout_marginBottom="8dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Raw 16-bit PCM audio is captured from the microphone via AudioRecord at 44,100 Hz. The dominant frequency is found using the Goertzel algorithm, which efficiently evaluates the energy present at a specific target frequency in a signal (much cheaper than a full FFT when you only need to scan a limited set of candidate frequencies). We scan a range of frequency bins covering the audible range typically produced by whistling, humming, or a tuning app, and report the bin with the strongest energy. Readings depend heavily on ambient noise and microphone quality - this is an educational tool, not a calibrated spectrum analyzer."
+            android:textColor="@color/lab_text_secondary" android:textSize="14sp" android:lineSpacingExtra="4dp" android:layout_marginBottom="24dp" />
+    </LinearLayout>
+</ScrollView>

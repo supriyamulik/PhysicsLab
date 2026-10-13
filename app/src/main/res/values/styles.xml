@@ -1,0 +1,16 @@
+<resources>
+    <style name="HistoryFilterChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:background">@color/lab_surface</item>
+        <item name="android:textColor">@color/lab_text_secondary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

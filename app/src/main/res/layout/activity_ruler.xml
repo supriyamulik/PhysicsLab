@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/lab_bg">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+        <TextView android:id="@+id/txtBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="‹ Back" android:textColor="@color/lab_primary" android:textSize="16sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center"
+            android:text="📏 Digital Ruler" android:textColor="@color/lab_text_primary" android:textSize="18sp" android:textStyle="bold" />
+        <View android:layout_width="40dp" android:layout_height="1dp" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/txtUnavailable" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="⚠ Camera permission is required for this tool." android:textColor="@color/lab_danger" android:textSize="14sp"
+        android:padding="12dp" android:background="@color/lab_surface" android:visibility="gone" />
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.camera.view.PreviewView android:id="@+id/previewView" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <com.physicslab.app.RulerOverlayView android:id="@+id/overlayView" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <TextView android:id="@+id/txtInstruction" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Step 1: Place a known-size reference object (e.g. a credit card) flat against the camera, then tap its two ends to calibrate."
+        android:textColor="@color/lab_text_secondary" android:textSize="13sp" android:padding="16dp" android:background="@color/lab_surface" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnCalibrate" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Calibrate (8.56 cm)" android:layout_marginEnd="8dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnReset" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Reset Points" android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/txtResultant" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Tap two points to measure" android:textColor="@color/lab_primary" android:textSize="20sp" android:textStyle="bold"
+        android:gravity="center" android:padding="12dp" />
+
+</LinearLayout>

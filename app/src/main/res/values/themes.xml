@@ -1,0 +1,88 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Light-only theme. Never follows system night mode.
+        forceDarkAllowed=false prevents Android from force-inverting colors.
+        No Material You dynamic color — lab_primary blue accents are always preserved.
+    -->
+    <style name="Theme.PhysicsLab" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Brand primary -->
+        <item name="colorPrimary">@color/lab_primary</item>
+        <item name="colorPrimaryVariant">@color/lab_primary</item>
+        <item name="colorOnPrimary">@color/lab_surface</item>
+
+        <!-- Secondary / accent -->
+        <item name="colorSecondary">@color/lab_accent</item>
+        <item name="colorOnSecondary">@color/lab_surface</item>
+
+        <!-- Window / background -->
+        <item name="android:windowBackground">@color/lab_bg</item>
+        <item name="android:statusBarColor">@color/lab_status_bar</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <!-- Typography — Inter bundled font -->
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+
+        <!-- Shapes — rounded cards -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeSmall</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeMedium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeLarge</item>
+
+        <!-- Elevation overlays OFF (we use white cards) -->
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <!-- Shape tokens matching the design's rounded cards -->
+    <style name="ShapeSmall" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="ShapeMedium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="ShapeLarge" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Tab segment button styles (Live / History / Statistics) -->
+    <style name="TabSegmentButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/lab_text_secondary</item>
+        <item name="android:background">@drawable/bg_tab_unselected</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="TabSegmentButton.Selected">
+        <item name="android:textColor">@color/lab_surface</item>
+        <item name="android:background">@drawable/bg_tab_selected</item>
+    </style>
+
+    <!-- Dashboard sensor card style -->
+    <style name="SensorCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/lab_surface</item>
+        <item name="strokeColor">@color/lab_card_border</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <!-- Stat cell (Min / Max / Avg) -->
+    <style name="StatLabel">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/lab_text_secondary</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="StatValue">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/lab_text_primary</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
+    </style>
+
+</resources>
+

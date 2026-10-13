@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/lab_bg">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+        <TextView android:id="@+id/txtBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="‹ Back" android:textColor="@color/lab_primary" android:textSize="16sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center"
+            android:text="📊 Reading History" android:textColor="@color/lab_text_primary" android:textSize="18sp" android:textStyle="bold" />
+        <TextView android:id="@+id/txtExport" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Export CSV" android:textColor="@color/lab_accent" android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingHorizontal="16dp" android:paddingBottom="12dp">
+        <TextView android:id="@+id/filter1d" style="@style/HistoryFilterChip" android:text="1D" />
+        <TextView android:id="@+id/filter1w" style="@style/HistoryFilterChip" android:text="1W" />
+        <TextView android:id="@+id/filter1m" style="@style/HistoryFilterChip" android:text="1M" />
+        <TextView android:id="@+id/filter3m" style="@style/HistoryFilterChip" android:text="3M" />
+        <TextView android:id="@+id/filterAll" style="@style/HistoryFilterChip" android:text="All" />
+    </LinearLayout>
+
+    <com.physicslab.app.TrendGraphView android:id="@+id/trendGraph" android:layout_width="match_parent" android:layout_height="140dp" android:layout_marginHorizontal="16dp" android:layout_marginBottom="12dp" android:background="@color/lab_surface" />
+
+    <TextView android:id="@+id/txtEmpty" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="No readings logged yet. Open any sensor screen to start recording history." android:textColor="@color/lab_text_secondary"
+        android:textSize="14sp" android:gravity="center" android:padding="24dp" android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:paddingHorizontal="12dp" />
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnClear" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="16dp" android:text="Clear All History" android:backgroundTint="@color/lab_danger" />
+</LinearLayout>

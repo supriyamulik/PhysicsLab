@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp">
+
+        <!-- Drag handle -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_drag_handle" />
+
+        <!-- Header: Title + SI Unit -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPhysicsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_bold"
+                    tools:text="Magnetic Field" />
+
+                <TextView
+                    android:id="@+id/tvPhysicsSiUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular"
+                    tools:text="SI Unit: Tesla (µT)" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPhysicsUnitBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_circle_blue_light"
+                android:textColor="@color/lab_primary"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                tools:text="µT" />
+        </LinearLayout>
+
+        <!-- 1. Formula Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lab_primary"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_primary_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RESULTANT FORMULA"
+                    android:textColor="@color/lab_primary"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/tvPhysicsFormula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_bold"
+                    tools:text="B = √(Bx² + By² + Bz²)" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2. Physical Definition Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WHAT IT MEASURES"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:letterSpacing="0.06"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tvPhysicsDefinition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:lineSpacingMultiplier="1.35"
+                    tools:text="Magnetic field describes the magnetic force..." />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. Reference Values Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TYPICAL REFERENCE RANGES (APPROXIMATE)"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:letterSpacing="0.06"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutReferenceRangesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. Sensor Limitations / Disturbance Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INTERFERENCE &amp; SENSOR LIMITATIONS"
+                    android:textColor="@color/lab_warning"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:letterSpacing="0.06"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tvPhysicsDisturbances"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:lineSpacingMultiplier="1.35"
+                    tools:text="Smartphones are sensitive to hard-iron and soft-iron distortions..." />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. Hardware Sensor Specs Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHardwareSpecs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEVICE HARDWARE SENSOR"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:letterSpacing="0.06"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sensor:"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:id="@+id/tvHardwareName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="AK09918C Magnetometer" />
+                </LinearLayout>
+
+                <!-- Vendor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Vendor:"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:id="@+id/tvHardwareVendor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="Asahi Kasei" />
+                </LinearLayout>
+
+                <!-- Max Range -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Max Range:"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:id="@+id/tvHardwareMaxRange"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="4912.0 µT" />
+                </LinearLayout>
+
+                <!-- Resolution -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Resolution:"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:id="@+id/tvHardwareResolution"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="0.15 µT" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Close Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPhysicsClose"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Done"
+            android:textColor="@color/lab_surface"
+            android:fontFamily="@font/inter_semibold"
+            app:cornerRadius="10dp"
+            app:backgroundTint="@color/lab_primary" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card"
+    android:paddingBottom="24dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_drag_handle" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/lab_card_border"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/lab_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lab_text_primary"
+                android:textSize="18sp"
+                android:fontFamily="@font/inter_bold"
+                tools:text="Lab Bench A - Morning" />
+
+            <TextView
+                android:id="@+id/tvDetailTimestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_regular"
+                tools:text="October 13, 2026 at 11:30 PM" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/lab_primary"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/lab_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_medium"
+                android:letterSpacing="0.08" />
+
+            <TextView
+                android:id="@+id/tvDetailHeroValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/lab_primary"
+                android:textSize="32sp"
+                android:fontFamily="@font/inter_bold"
+                tools:text="48.2 uT" />
+
+            <LinearLayout
+                android:id="@+id/layoutDetailComponents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvDetailX"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    tools:text="X: 12.1" />
+
+                <TextView
+                    android:id="@+id/tvDetailY"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:gravity="center_horizontal"
+                    tools:text="Y: -24.5" />
+
+                <TextView
+                    android:id="@+id/tvDetailZ"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:gravity="end"
+                    tools:text="Z: 40.0" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/lab_card_border"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/lab_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sensor"
+                    android:textColor="@color/lab_text_tertiary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+                <TextView
+                    android:id="@+id/tvDetailSensorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium"
+                    android:gravity="end"
+                    tools:text="AK09916C Magnetometer" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutDetailAccuracy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Accuracy"
+                    android:textColor="@color/lab_text_tertiary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+                <TextView
+                    android:id="@+id/tvDetailAccuracy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium"
+                    android:gravity="end"
+                    tools:text="High" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Samples"
+                    android:textColor="@color/lab_text_tertiary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+                <TextView
+                    android:id="@+id/tvDetailSampleCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_medium"
+                    android:gravity="end"
+                    tools:text="10 samples" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/lab_card_border"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/lab_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PHYSICAL CONTEXT"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_semibold"
+                android:letterSpacing="0.06"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvDetailInterpretation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_regular"
+                android:lineSpacingMultiplier="1.4"
+                tools:text="This value is within the typical range for Earth magnetic field." />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailDelete"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Delete"
+            android:textColor="@color/lab_danger"
+            android:fontFamily="@font/inter_medium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailRename"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:text="Rename"
+            android:textColor="@color/lab_text_secondary"
+            android:fontFamily="@font/inter_medium" />
+
+    </LinearLayout>
+
+</LinearLayout>

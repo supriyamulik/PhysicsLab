@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_card">
+
+    <TextView
+        android:id="@+id/tvCaptureProgressTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recording Sensor Window"
+        android:textColor="@color/lab_text_primary"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_bold" />
+
+    <TextView
+        android:id="@+id/tvCaptureProgressSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Accumulating ~1s of live physical sensor telemetry..."
+        android:textColor="@color/lab_text_secondary"
+        android:textSize="13sp"
+        android:fontFamily="@font/inter_regular" />
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/pbCaptureWindow"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_marginTop="20dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="@color/lab_primary"
+        android:progressBackgroundTint="@color/lab_card_border" />
+
+    <TextView
+        android:id="@+id/tvCaptureProgressPercent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="0%"
+        android:textColor="@color/lab_primary"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_semibold" />
+
+</LinearLayout>

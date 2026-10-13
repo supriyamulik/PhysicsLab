@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lab_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="‹ Back"
+            android:textColor="@color/lab_primary"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💡 Light Intensity Meter"
+            android:textColor="@color/lab_text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/txtSensorInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sensor: —"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/txtUnavailable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠ Ambient light sensor not available on this device."
+            android:textColor="@color/lab_danger"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="@color/lab_surface"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Reading card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="6dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ILLUMINANCE (E)"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="12sp"
+                    android:letterSpacing="0.1" />
+
+                <TextView
+                    android:id="@+id/txtLux"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/lab_warning"
+                    android:textSize="52sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="lux (lx)"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Condition: —"
+            android:textColor="@color/lab_text_primary"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@color/lab_surface"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Explanation -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Physics behind this measurement"
+            android:textColor="@color/lab_text_primary"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The ambient light sensor (a photodiode behind the front glass, next to the front camera) measures illuminance — the luminous flux received per unit area — in lux (lx). It converts incident light photons into a proportional electrical signal.\n\nTypical reference values:\n• Moonlight: ~1 lux\n• Living room: 100–300 lux\n• Office lighting: 300–500 lux\n• Overcast daylight: 1000+ lux\n• Direct sunlight: 30,000–100,000 lux\n\nTry covering the sensor with your finger, then pointing it toward a lamp or window, and watch the reading fall and rise in real time."
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

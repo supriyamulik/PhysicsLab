@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lab_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PhysicsLab"
+            android:textColor="@color/lab_primary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smartphone-Based Measurement of Physical Quantities"
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHistory"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp"
+                android:text="📊 History" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettings"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp"
+                android:text="⚙ Settings" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        </LinearLayout>
+
+        <!-- Magnetic Field Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardMagnetic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🧲"
+                    android:textSize="32sp"
+                    android:layout_marginEnd="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Magnetic Field"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Magnetometer  •  microtesla (µT)"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/lab_primary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Acceleration Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAcceleration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚀"
+                    android:textSize="32sp"
+                    android:layout_marginEnd="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acceleration"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Accelerometer  •  m/s²"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/lab_primary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Light Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💡"
+                    android:textSize="32sp"
+                    android:layout_marginEnd="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Light Intensity"
+                        android:textColor="@color/lab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ambient Light Sensor  •  lux"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/lab_primary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More Tools"
+            android:textColor="@color/lab_text_primary"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardGyroscope"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌀" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gyroscope" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angular velocity • rad/s" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCompass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🧭" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Compass" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Heading • degrees" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBarometer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌡" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Barometer" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pressure • hPa" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardStepCounter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👣" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Step Counter" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Steps" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSoundFrequency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎵" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sound Frequency" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dominant tone • Hz" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDecibel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔊" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Decibel Meter" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sound level • dB" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRuler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📏" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Digital Ruler" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Camera-calibrated • cm" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReactionTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/lab_surface"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="26sp" android:layout_marginBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reaction Time" android:textColor="@color/lab_text_primary" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sensory-motor latency" android:textColor="@color/lab_text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Works fully offline. Readings are taken live from your phone's own sensors — nothing is hardcoded."
+            android:textColor="@color/lab_text_secondary"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

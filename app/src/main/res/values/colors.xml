@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background and surface -->
+    <color name="lab_bg">#F1F5F9</color>
+    <color name="lab_surface">#FFFFFF</color>
+    <color name="lab_card_border">#E2E8F0</color>
+
+    <!-- Brand blue (no dynamic color override) -->
+    <color name="lab_primary">#0284C7</color>
+    <color name="lab_primary_light">#E0F2FE</color>
+    <color name="lab_primary_selected_bg">#1D4ED8</color>
+
+    <!-- Semantic colors -->
+    <color name="lab_accent">#059669</color>
+    <color name="lab_positive">#10B981</color>
+    <color name="lab_warning">#D97706</color>
+    <color name="lab_danger">#DC2626</color>
+
+    <!-- Text -->
+    <color name="lab_text_primary">#0F172A</color>
+    <color name="lab_text_secondary">#475569</color>
+    <color name="lab_text_tertiary">#94A3B8</color>
+
+    <!-- Axis dot colors (used in Acceleration Axis Values) -->
+    <color name="lab_axis_x">#EF4444</color>
+    <color name="lab_axis_y">#22C55E</color>
+    <color name="lab_axis_z">#3B82F6</color>
+
+    <!-- Chart line -->
+    <color name="lab_chart_line">#38BDF8</color>
+
+    <!-- Bottom nav unselected -->
+    <color name="lab_nav_unselected">#94A3B8</color>
+
+    <!-- Status bar / window -->
+    <color name="lab_status_bar">#FFFFFF</color>
+
+    <color name="ic_launcher_background">#0F172A</color>
+</resources>

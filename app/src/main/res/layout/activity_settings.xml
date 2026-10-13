@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/lab_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+
+        <TextView android:id="@+id/txtBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="‹ Back" android:textColor="@color/lab_primary" android:textSize="16sp" android:layout_marginTop="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙ Settings" android:textColor="@color/lab_text_primary" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="THEME" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:letterSpacing="0.1" android:layout_marginBottom="8dp" />
+
+        <RadioGroup android:id="@+id/themeGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/lab_surface" android:padding="8dp" android:layout_marginBottom="24dp">
+            <RadioButton android:id="@+id/radioLight" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Light" android:textColor="@color/lab_text_primary" android:padding="8dp" />
+            <RadioButton android:id="@+id/radioDark" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Dark" android:textColor="@color/lab_text_primary" android:padding="8dp" />
+            <RadioButton android:id="@+id/radioSystem" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Follow System" android:textColor="@color/lab_text_primary" android:padding="8dp" />
+        </RadioGroup>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CALIBRATION" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:letterSpacing="0.1" android:layout_marginBottom="8dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@color/lab_surface" android:padding="16dp" android:layout_marginBottom="24dp">
+            <TextView android:id="@+id/txtRulerCalibration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Digital Ruler: not calibrated" android:textColor="@color/lab_text_primary" android:layout_marginBottom="12dp" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnResetCalibration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reset Calibration" />
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ABOUT" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:letterSpacing="0.1" android:layout_marginBottom="8dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="PhysicsLab uses your phone's built-in sensors, microphone, and camera to turn everyday hardware into a physics measurement lab. All readings come from real hardware - if a sensor isn't present on your device, or a permission is denied, the app tells you plainly rather than faking a value."
+            android:textColor="@color/lab_text_secondary" android:textSize="13sp" android:lineSpacingExtra="4dp" android:padding="16dp" android:background="@color/lab_surface" android:layout_marginBottom="24dp" />
+    </LinearLayout>
+</ScrollView>

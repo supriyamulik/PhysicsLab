@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_nav_dashboard"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_magnetic"
+        android:icon="@drawable/ic_nav_magnetic"
+        android:title="Magnetic Field" />
+    <item
+        android:id="@+id/nav_acceleration"
+        android:icon="@drawable/ic_nav_acceleration"
+        android:title="Acceleration" />
+    <item
+        android:id="@+id/nav_light"
+        android:icon="@drawable/ic_nav_light"
+        android:title="Light" />
+</menu>

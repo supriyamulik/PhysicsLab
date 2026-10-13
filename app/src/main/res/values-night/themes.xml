@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        Intentionally empty. The app is light-only; night mode is disabled by
+        using Theme.MaterialComponents.Light as parent in values/themes.xml
+        and forceDarkAllowed=false. This file intentionally overrides the
+        night qualifier with nothing so no accidental dark styles leak in.
+    -->
+</resources>

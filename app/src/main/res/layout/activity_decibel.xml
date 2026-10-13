@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/lab_bg" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+
+        <TextView android:id="@+id/txtBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="‹ Back" android:textColor="@color/lab_primary" android:textSize="16sp" android:padding="4dp" android:layout_marginTop="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🔊 Decibel Meter" android:textColor="@color/lab_text_primary" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+
+        <TextView android:id="@+id/txtSensorInfo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Microphone: —" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:layout_marginBottom="16dp" />
+
+        <TextView android:id="@+id/txtUnavailable" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⚠ Microphone permission is required for this tool." android:textColor="@color/lab_danger" android:textSize="14sp"
+            android:padding="12dp" android:background="@color/lab_surface" android:visibility="gone" android:layout_marginBottom="16dp" />
+
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp" app:cardBackgroundColor="@color/lab_surface" app:cardElevation="6dp" android:layout_marginBottom="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="28dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SOUND LEVEL (RELATIVE)" android:textColor="@color/lab_text_secondary" android:textSize="12sp" android:letterSpacing="0.1" />
+                <TextView android:id="@+id/txtResultant" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="@color/lab_primary" android:textSize="52sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="dB (uncalibrated, relative)" android:textColor="@color/lab_text_secondary" android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnListen" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Start Listening" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⚠ A phone microphone is not a certified sound-level meter. Its sensitivity and frequency response are not calibrated to any standard, so this reading is only meaningful for comparing loud vs. quiet relative to this device - not as an absolute, laboratory-grade dB(SPL) figure."
+            android:textColor="@color/lab_warning" android:textSize="13sp" android:padding="12dp" android:background="@color/lab_surface" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Physics behind this measurement" android:textColor="@color/lab_text_primary" android:textStyle="bold" android:textSize="15sp" android:layout_marginBottom="8dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Raw PCM samples are captured with AudioRecord. We compute the RMS (root-mean-square) amplitude of each buffer, then convert it to a logarithmic decibel-like scale using dB = 20 * log10(RMS / reference). Human loudness perception is logarithmic, which is why decibels (not linear amplitude) are the standard unit for sound level - a 10 dB increase corresponds to roughly a perceived doubling of loudness."
+            android:textColor="@color/lab_text_secondary" android:textSize="14sp" android:lineSpacingExtra="4dp" android:layout_marginBottom="24dp" />
+    </LinearLayout>
+</ScrollView>

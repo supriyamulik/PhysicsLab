@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lab_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Top Header Bar -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/tvHeaderTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:textColor="@color/lab_text_primary"
+                android:textSize="24sp"
+                android:fontFamily="@font/inter_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnDashboardInfo" />
+
+            <TextView
+                android:id="@+id/tvHeaderSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Real-time multi-sensor telemetry &amp; history"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderTitle"
+                app:layout_constraintEnd_toStartOf="@+id/btnDashboardInfo" />
+
+            <ImageButton
+                android:id="@+id/btnDashboardInfo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_info"
+                android:contentDescription="Physics &amp; Sensor Information"
+                app:tint="@color/lab_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Empty State Banner (Shown when 0 readings saved anywhere) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutDashboardEmptyState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_primary"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_primary_light"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to PhysicsLab"
+                    android:textColor="@color/lab_primary"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="No experiment measurements have been saved yet. Tap any sensor card below to start live telemetry and capture your first reading."
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:lineSpacingMultiplier="1.25" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 1. Magnetic Field Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMagneticField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Header row: Icon + Title + Availability badge -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivMagIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_circle_blue_light"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_nav_magnetic"
+                        android:contentDescription="Magnetic Field Icon"
+                        app:tint="@color/lab_primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvMagTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Magnetic Field"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/inter_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vector Field · µT"
+                            android:textColor="@color/lab_text_tertiary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <!-- Sensor Availability Badge -->
+                    <TextView
+                        android:id="@+id/chipMagAvailability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available"
+                        android:textColor="@color/lab_positive"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:background="@drawable/bg_tab_unselected"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <!-- Value row: Latest Saved Value -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:background="@drawable/bg_tab_unselected">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LATEST SAVED VALUE"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:letterSpacing="0.06" />
+
+                    <TextView
+                        android:id="@+id/tvMagLatestValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/inter_bold"
+                        tools:text="48.20 µT" />
+
+                    <TextView
+                        android:id="@+id/tvMagLatestDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        tools:text="Lab Bench A · Oct 13, 2026 · 11:30 PM" />
+
+                </LinearLayout>
+
+                <!-- Footer row: Saved count & Open sensor tap target -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tvMagSavedCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="14 saved readings" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open Sensor →"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2. Acceleration Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAcceleration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivAccelIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_circle_blue_light"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_nav_acceleration"
+                        android:contentDescription="Acceleration Icon"
+                        app:tint="@color/lab_primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvAccelTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Acceleration"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/inter_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vector Field · m/s² (includes g)"
+                            android:textColor="@color/lab_text_tertiary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chipAccelAvailability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available"
+                        android:textColor="@color/lab_positive"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:background="@drawable/bg_tab_unselected"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:background="@drawable/bg_tab_unselected">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LATEST SAVED VALUE"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:letterSpacing="0.06" />
+
+                    <TextView
+                        android:id="@+id/tvAccelLatestValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/inter_bold"
+                        tools:text="9.81 m/s²" />
+
+                    <TextView
+                        android:id="@+id/tvAccelLatestDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        tools:text="Drop Test · Oct 13, 2026 · 11:24 PM" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tvAccelSavedCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="8 saved readings" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open Sensor →"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. Light Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivLightIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_circle_blue_light"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_nav_light"
+                        android:contentDescription="Light Icon"
+                        app:tint="@color/lab_primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLightTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ambient Light"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/inter_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scalar Illuminance · lux"
+                            android:textColor="@color/lab_text_tertiary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chipLightAvailability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available"
+                        android:textColor="@color/lab_positive"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:background="@drawable/bg_tab_unselected"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:background="@drawable/bg_tab_unselected">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LATEST SAVED VALUE"
+                        android:textColor="@color/lab_text_tertiary"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:letterSpacing="0.06" />
+
+                    <TextView
+                        android:id="@+id/tvLightLatestValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/inter_bold"
+                        tools:text="450.0 lux" />
+
+                    <TextView
+                        android:id="@+id/tvLightLatestDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        tools:text="Desk Lamp · Oct 13, 2026 · 11:20 PM" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tvLightSavedCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_medium"
+                        tools:text="5 saved readings" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open Sensor →"
+                        android:textColor="@color/lab_primary"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_semibold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. Total Saved Captures Counter Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSavedCaptures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/lab_card_border"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/lab_surface">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvCapturesLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Experiment History Overview"
+                    android:textColor="@color/lab_text_primary"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivChevron" />
+
+                <TextView
+                    android:id="@+id/tvCapturesCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="0 readings recorded"
+                    android:textColor="@color/lab_text_secondary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCapturesLabel"
+                    app:layout_constraintEnd_toStartOf="@+id/ivChevron" />
+
+                <ImageView
+                    android:id="@+id/ivChevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Go to recordings"
+                    app:tint="@color/lab_text_tertiary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. Summarized Physics Reference Guide Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Physics Reference Guide"
+                android:textColor="@color/lab_text_primary"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter_bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="12dp"
+                android:text="Key scientific concepts, formulas, and sensor characteristics"
+                android:textColor="@color/lab_text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular" />
+
+            <!-- Summary: Magnetic Field -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPhysicsGuideMag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/lab_card_border"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/lab_surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Magnetic Field (µT)"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/inter_semibold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Details →"
+                            android:textColor="@color/lab_primary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_medium" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Formula: B = √(Bx² + By² + Bz²) · Earth's field is roughly 25–65 µT. Disturbed by magnets, steel, speakers, cases, and electronics."
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        android:lineSpacingMultiplier="1.25" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Summary: Acceleration -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPhysicsGuideAccel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/lab_card_border"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/lab_surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Acceleration (m/s²)"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/inter_semibold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Details →"
+                            android:textColor="@color/lab_primary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_medium" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Formula: a = √(ax² + ay² + az²) · Gravity (≈ 9.81 m/s²) is included: a resting phone reads ~9.8 m/s², while free fall reads near 0 m/s²."
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        android:lineSpacingMultiplier="1.25" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Summary: Light -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPhysicsGuideLight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/lab_card_border"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/lab_surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Ambient Light (lux)"
+                            android:textColor="@color/lab_text_primary"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/inter_semibold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Details →"
+                            android:textColor="@color/lab_primary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_medium" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Illuminance in lux (lumens/m²): dim indoor ~10 lx, office ~400 lx, overcast ~2,000 lx, direct sunlight ~50,000+ lx. Uncalibrated indicative sensor."
+                        android:textColor="@color/lab_text_secondary"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular"
+                        android:lineSpacingMultiplier="1.25" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

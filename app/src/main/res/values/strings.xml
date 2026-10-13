@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhysicsLab</string>
+
+    <string name="shortcut_magnetic_short">Magnetic Field</string>
+    <string name="shortcut_magnetic_long">Magnetic Field Meter</string>
+    <string name="shortcut_acceleration_short">Acceleration</string>
+    <string name="shortcut_acceleration_long">Acceleration and Gravity Analyzer</string>
+    <string name="shortcut_decibel_short">Decibel Meter</string>
+    <string name="shortcut_decibel_long">Decibel Sound Level Meter</string>
+    <string name="shortcut_reaction_short">Reaction Time</string>
+    <string name="shortcut_reaction_long">Reaction-Time Tester</string>
+</resources>
